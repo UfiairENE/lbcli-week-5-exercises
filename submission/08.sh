@@ -12,7 +12,7 @@ nvalue=$(($seconds/512))
 hexvalue=$(printf '%x\n' $nvalue)
 relativevalue=$(printf '%x\n' $((0x$hexvalue | 0x400000)))
 
-lehex=$(./integer2lehex.sh $((16#$relativevalue)) | grep "Hexcode" | awk '{print $2}')
+lehex=$(submission/integer2lehex.sh $((16#$relativevalue)) | grep "Hexcode" | awk '{print $2}')
 
 pubKeyHash=$(echo -n $publicKey | xxd -r -p | openssl dgst -sha256 -binary | openssl dgst -rmd160 | awk '{print $2}')
 
